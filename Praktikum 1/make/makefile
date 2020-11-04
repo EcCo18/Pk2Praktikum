@@ -1,5 +1,8 @@
-../programm/programm: ../code/main.c asciiCode.o einMalEins.o intToBin.o
-	gcc -o ../programm/programm ../code/main.c asciiCode.o einMalEins.o intToBin.o
+../programm/programm: ../code/main.c libmy.a 
+	gcc -o ../programm/programm ../code/main.c libmy.a 
+
+libmy.a: asciiCode.o einMalEins.o intToBin.o
+	ar r libmy.a intToBin.o asciiCode.o einMalEins.o
 
 asciiCode.o: ../code/asciiCode.c 
 	gcc -c ../code/asciiCode.c

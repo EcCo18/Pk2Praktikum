@@ -3,7 +3,7 @@
 void printEinMalEins()
 {
     int from;
-    puts("Kleinste Zhal Ein mal Eins eigeben.\n");
+    puts("Kleinste Zahl Ein mal Eins eigeben.\n");
     scanf("%d", &from);
 
     int to;
