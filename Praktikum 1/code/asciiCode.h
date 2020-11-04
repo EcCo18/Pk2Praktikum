@@ -1,0 +1,1 @@
+void printAsciiTable(int width);
