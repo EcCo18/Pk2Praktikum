@@ -1,9 +1,15 @@
 #include "DictionaryField.h"
 #include <iostream>
 
+DictionaryField::DictionaryField()
+{
+    this->hasNextBoolean = false;
+}
+
 DictionaryField::DictionaryField(const int value)
 {
     this->value = value;
+    this->hasNextBoolean = false;
 }
 
 void DictionaryField::setNextBoolean(const bool hasNext)
@@ -24,6 +30,11 @@ void DictionaryField::setNext(DictionaryField *next)
 bool DictionaryField::hasNext()
 {
     return this->hasNextBoolean;
+}
+
+DictionaryField* DictionaryField::getNext()
+{
+    return this->next;
 }
 
 void DictionaryField::printData()

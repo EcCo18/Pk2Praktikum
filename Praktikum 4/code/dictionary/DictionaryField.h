@@ -11,5 +11,6 @@ class DictionaryField
         bool hasNext();
         int getValue();
         void setNext(DictionaryField *next);
+        DictionaryField* getNext();
         void printData();
 };
