@@ -76,8 +76,8 @@ int Dictionary::deleteMember(int number)
                 }
                 
             }
-            previousField = field;
-        } while (field->hasNext());
+            previousField = &field;
+        } while (field.hasNext());
         return -1;
     }
 }
