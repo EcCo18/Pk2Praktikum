@@ -14,5 +14,12 @@ int main(void)
 
     char *str1 = "test";
     char *str2 = " lol";
-    printf("%s", stringcat(str1, str2));
+    printf("%s \n", stringcat(str1, str2));
+
+    int number = 49;
+    printf("fak 49: %f \n", (double)fak(number));
+
+    int number2 = 49;
+    int number3 = 6;
+    printf("binom 49,6: %f", (double)binom(number2, number3));
 }

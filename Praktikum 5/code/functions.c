@@ -52,3 +52,19 @@ char *stringcat(const char *str1, const char *str2)
     }
     return ret;
 }
+
+double fak(int number)
+{
+    if(number == 0)
+    {
+        return 1;
+    }else
+    {
+        return number * fak(number-1);
+    }
+}
+
+double binom(int n, int k)
+{
+    return (fak(n) / (fak(k) * (fak((n-k)))));
+}
