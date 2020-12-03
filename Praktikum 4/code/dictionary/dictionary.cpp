@@ -61,13 +61,13 @@ int Dictionary::deleteMember(int number)
                         //array[index] = field.getNext();
                     }
                     
-                }else
+                }else //is last
                 {
-                   if(previousField != nullptr)
+                   if(previousField != nullptr) //has member before
                    {
                        previousField->setNextBoolean(false);
                        previousField->setNext(nullptr);
-                   }else
+                   }else //is last and first
                    {
                        this->lastElements[index] = nullptr;
                        array[index] = NULL;
@@ -77,6 +77,7 @@ int Dictionary::deleteMember(int number)
                 
             }
             previousField = &field;
+            //field = field->getNext(); <--important!
         } while (field.hasNext());
         return -1;
     }
@@ -99,6 +100,7 @@ int Dictionary::isMember(int number)
             {
                 return 1;
             }
+            field = field->getNext();
         } while (field->hasNext());
         return 0;
     }
