@@ -92,9 +92,22 @@ LinkedListObject* LinkedList::get(int position)
     }
 }
 
-int LinkedList::index_of(LinkedListObject *object)
+int LinkedList::index_of(LinkedListObject *objectToSearch)
 {
+    if(counter > 0)
+    {
+        LinkedListObject *object = this->first;
 
+        for(int i=0; i<counter; i++)
+        {
+            if(objectToSearch == object)
+            {
+                return i;
+            }
+            object = object->getNext();
+        }
+    }
+    return -1;
 }
 
 void LinkedList::visit_all(void (*work)(LinkedListObject *t))

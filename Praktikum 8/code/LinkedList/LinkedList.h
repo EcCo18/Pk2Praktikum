@@ -18,7 +18,7 @@ class LinkedList
         int insert(LinkedListObject *object, int position);
         int remove(int position);
         LinkedListObject *get(int position);
-        int index_of(LinkedListObject *object);
+        int index_of(LinkedListObject *objectToSearch);
 
         void visit_all(void (*work)(LinkedListObject *t));
 
