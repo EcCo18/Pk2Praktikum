@@ -11,6 +11,8 @@ class LinkedList
         LinkedListObject *last;
         int counter;
 
+        LinkedListObject *goToPosition(int position);
+
     public:
         int append(LinkedListObject *object);
         int insert(LinkedListObject *object, int position);
