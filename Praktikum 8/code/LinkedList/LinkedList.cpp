@@ -99,7 +99,19 @@ int LinkedList::index_of(LinkedListObject *object)
 
 void LinkedList::visit_all(void (*work)(LinkedListObject *t))
 {
+    if(counter > 0)
+    {
+        int i=0;
+        LinkedListObject *object = this->first;
 
+        do
+        {
+            work(object);
+            object = object->getNext();
+            i++;
+        } while (i < counter);
+        
+    }
 }
 
 //private functions
