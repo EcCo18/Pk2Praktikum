@@ -6,6 +6,8 @@
 LinkedList::LinkedList()
 {
     this->counter = 0;
+    this->first = NULL;
+    this->last = NULL;
 }
 
 //destructor
