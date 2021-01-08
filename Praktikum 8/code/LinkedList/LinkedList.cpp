@@ -36,12 +36,49 @@ int LinkedList::append(LinkedListObject *object)
         this->last = object;
     }  
 
-    this->counter++; 
+    this->counter++;
+    return 0; 
 }
 
 int LinkedList::insert(LinkedListObject *object, int position)
 {
+    if(position < counter)
+    {
+        LinkedListObject *objectsNext = goToPosition(position);
+        LinkedListObject *objectsPrevious = goToPosition((position-1));
 
+        object->setNext(objectsNext);
+        object->setPrevious(objectsPrevious);
+
+        if(counter == 0) //only object in list
+        {
+            this->last = object;
+            this->last = object;
+
+        }else if(position == 0) //insert at begin
+        {
+            this->first = object;
+            object->setNext(objectsNext);
+            object->setPrevious(objectsPrevious);
+            objectsNext->setPrevious(object);
+
+        }else //insert in middle
+        {
+            objectsPrevious->setNext(object);
+            objectsNext->setPrevious(object);
+            object->setPrevious(objectsPrevious);
+            object->setNext(objectsNext);
+        }
+        
+        counter++;
+        return 0;
+
+    }else //append at end, the index is bigger than the list
+    {
+        append(object);
+        return 0;
+    }
+    
 }
 
 int LinkedList::remove(int position)
@@ -130,11 +167,15 @@ void LinkedList::visit_all(void (*work)(LinkedListObject *t))
 //private functions
 LinkedListObject *LinkedList::goToPosition(int position)
 {
-    LinkedListObject *object = this->first;
+    if(position >= 0 && position < counter)
+    {
+        LinkedListObject *object = this->first;
 
         for(int i=0; i<position; i++)
         {
             object = object->getNext();
         }
         return object;
+    }
+    return NULL;
 }
