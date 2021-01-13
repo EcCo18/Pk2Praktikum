@@ -11,12 +11,14 @@ class LinkedList
         LinkedListObject *last;
         int counter;
 
+        LinkedListObject *goToPosition(int position);
+
     public:
         int append(LinkedListObject *object);
         int insert(LinkedListObject *object, int position);
         int remove(int position);
         LinkedListObject *get(int position);
-        int index_of(LinkedListObject *object);
+        int index_of(LinkedListObject *objectToSearch);
 
         void visit_all(void (*work)(LinkedListObject *t));
 
@@ -29,8 +31,13 @@ class LinkedList
         {
             return last;
         }
+        inline int getCounter()
+        {
+            return counter;
+        }
 
         LinkedList();
+        LinkedList(const LinkedList &cpyList);
         ~LinkedList();
 };
 

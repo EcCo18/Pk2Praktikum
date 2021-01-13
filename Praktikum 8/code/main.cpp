@@ -2,16 +2,27 @@
 #include "LinkedList/LinkedList.h"
 #include "LinkedList/LinkedListObject/LinkedListObject.h"
 
+void printObject(LinkedListObject *object);
+
 int main(void)
 {
-    LinkedList *linkedList = new LinkedList();
+    LinkedList linkedList;
     LinkedListObject *object = new LinkedListObject("test123");
     LinkedListObject *object2 = new LinkedListObject("andererTest");
+    LinkedListObject *object3 = new LinkedListObject("das dritte object");
 
-    linkedList->append(object);
-    linkedList->append(object2);
+    linkedList.append(object);
+    linkedList.append(object2);
+    linkedList.append(object3);
 
-    printf("Erstes Element: %s \n", linkedList->get(1)->getText());
+    linkedList.visit_all(*printObject);
 
-    delete linkedList;
+    LinkedList linkedList2 = linkedList;
+
+    linkedList2.visit_all(*printObject);
+}
+
+void printObject(LinkedListObject *object)
+{
+    std::cout << object->getText() << std::endl;
 }
