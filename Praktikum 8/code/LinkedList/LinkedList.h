@@ -31,8 +31,13 @@ class LinkedList
         {
             return last;
         }
+        inline int getCounter()
+        {
+            return counter;
+        }
 
         LinkedList();
+        LinkedList(const LinkedList &cpyList);
         ~LinkedList();
 };
 

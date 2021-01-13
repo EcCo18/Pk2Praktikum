@@ -10,9 +10,39 @@ LinkedList::LinkedList()
     this->last = NULL;
 }
 
+LinkedList::LinkedList(const LinkedList &cpyList)
+{
+    std::cerr << "copy const called!" << std::endl;
+
+    this->counter = 0;
+    this->first = NULL;
+    this->last = NULL;
+
+    if(cpyList.counter > 0)
+    {
+        LinkedListObject *tmp = cpyList.first;
+
+        for(int i=0; i<cpyList.counter; i++)
+        {
+            this->append(new LinkedListObject(tmp->getText()));
+            tmp = tmp->getNext();
+        }
+    }
+    
+}
+
 //destructor
 LinkedList::~LinkedList()
 {
+    LinkedListObject *object = this->first;
+
+    for(int i=0; i<counter; i++)
+    {
+        LinkedListObject *next = object->getNext();
+        delete object;
+        object = next;
+    }
+
     std::cout << "LinkedList deleted!" << std::endl;
 }
 
