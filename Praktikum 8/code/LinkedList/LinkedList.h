@@ -1,5 +1,6 @@
 #include <iostream>
 #include "LinkedListObject/LinkedListObject.h"
+#include "LinkedListIterator/Iterator.h"
 
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
@@ -34,6 +35,10 @@ class LinkedList
         inline int getCounter()
         {
             return counter;
+        }
+        inline Iterator *getIterator()
+        {
+            return new Iterator(this->first);
         }
 
         LinkedList();
