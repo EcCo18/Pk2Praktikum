@@ -28,7 +28,6 @@ LinkedList::LinkedList(const LinkedList &cpyList)
             tmp = tmp->getNext();
         }
     }
-    
 }
 
 //destructor
@@ -56,6 +55,7 @@ int LinkedList::append(LinkedListObject *object)
         object->setPrevious(NULL);
 
         this->first = object;
+
         this->last = object;
     }else //append at the end
     {
@@ -82,12 +82,13 @@ int LinkedList::insert(LinkedListObject *object, int position)
 
         if(counter == 0) //only object in list
         {
-            this->last = object;
+            this->first = object;
             this->last = object;
 
         }else if(position == 0) //insert at begin
         {
             this->first = object;
+
             object->setNext(objectsNext);
             object->setPrevious(objectsPrevious);
             objectsNext->setPrevious(object);
@@ -135,6 +136,7 @@ int LinkedList::remove(int position)
         }else //is only element in list
         {
             this->first = NULL;
+
             this->last = NULL;
         }
 
@@ -179,18 +181,11 @@ int LinkedList::index_of(LinkedListObject *objectToSearch)
 
 void LinkedList::visit_all(void (*work)(LinkedListObject *t))
 {
-    if(counter > 0)
-    {
-        int i=0;
-        LinkedListObject *object = this->first;
+    Iterator *iterator = getIterator();
 
-        do
-        {
-            work(object);
-            object = object->getNext();
-            i++;
-        } while (i < counter);
-        
+    while(iterator->hasNext())
+    {
+        work(iterator->next());
     }
 }
 

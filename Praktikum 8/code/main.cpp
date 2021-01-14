@@ -1,6 +1,7 @@
 #include <iostream>
 #include "LinkedList/LinkedList.h"
 #include "LinkedList/LinkedListObject/LinkedListObject.h"
+#include "LinkedList/LinkedListIterator/Iterator.h"
 
 void printObject(LinkedListObject *object);
 
@@ -20,6 +21,13 @@ int main(void)
     LinkedList linkedList2 = linkedList;
 
     linkedList2.visit_all(*printObject);
+
+    Iterator *iteratorList = linkedList2.getIterator();
+
+    while(iteratorList->hasNext())
+    {
+        printf("iterator Next: %s \n", iteratorList->next()->getText());
+    }
 }
 
 void printObject(LinkedListObject *object)
