@@ -30,7 +30,6 @@ class Matrix
             }
             cout << std::endl;
         }
-
         return cout;
     }
 
@@ -42,14 +41,13 @@ class Matrix
 
 //constructor
 template <class T>
-Matrix<T>::Matrix(int dimension)
+Matrix<T>::Matrix(int dimension) : n(dimension)
 {
-    this->n = dimension;
     *array = new T[n];
 
     for(int i=0; i<n; i++)
     {
-        this->array[i] = new T[n];
+        array[i] = new T[n];
     }
 }
 
